@@ -1,0 +1,40 @@
+---
+title: "Milestone2"
+author: "Abass"
+date: "2024-09-20"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+```{r}
+library(readr)
+```
+
+
+```{r}
+jobs <- read_csv("jobs_in_data.csv.zip")
+View(jobs)
+```
+# display the column salary
+```{r}
+jobs$salary
+```
+
+# make a histogram of the values in the salary column
+```{r}
+hist(jobs$salary)
+```
+
+# make a barplot of the values in the experience_level column
+```{r}
+barplot(table(jobs$experience_level))
+```
+
+# make a histogram of the values in the salary_in_usd column
+```{r}
+hist(jobs$salary_in_usd)
+```
+
