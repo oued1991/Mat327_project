@@ -83,3 +83,51 @@ barplot(table(jobs$job_title), las=2)
 Most companies need data engineers.
 
 
+
+
+
+Milestone 4
+
+
+```{r}
+sum(is.na(jobs$salary_in_usd))
+```
+There is no missing data in my salary_in_usd column.
+
+
+```{r}
+summary(jobs$salary_in_usd)
+```
+
+We can see that there is outliers in the right hand of our histogram. 15000 is the minimum salary and 450000 is the maximum salary.
+
+
+#removing outliers
+
+
+```{r}
+Q1 <- quantile(jobs$salary_in_usd, 0.25, na.rm = TRUE)
+Q3 <- quantile(jobs$salary_in_usd, 0.75, na.rm = TRUE)
+IQR_value <- IQR(jobs$salary_in_usd, na.rm = TRUE)
+```
+
+
+```{r}
+lower_bound <- Q1 - 1.5 * IQR_value
+upper_bound <- Q3 + 1.5 * IQR_value
+```
+
+```{r}
+jobs2 <- jobs[jobs$salary_in_usd >= lower_bound & jobs$salary_in_usd <= upper_bound, ]
+```
+
+```{r}
+summary(jobs2$salary_in_usd)
+```
+
+```{r}
+hist(jobs2$salary_in_usd)
+```
+
+This is the new histogram of salary_in_usd without outliers.
+
