@@ -1,0 +1,47 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+
+library(readr)
+jobs <- read_csv("jobs_in_data.csv.zip")
+View(jobs)
+
+
+hist(jobs$salary, xlab = "Jobs salary", main = "Histogram of the jobs salary",
+                    breaks = 12,
+                    col = "dodgerblue",
+                    border = "darkorange")
+                    
+                    
+We can observe that our distribution is right skewed with an outlier at the right. Most of the salaries are between 100k to 200k which is not bad at all.Jobs in this related field are highly paid.
+
+
+barplot(table(jobs$experience_level), xlab   = "Experience level",
+     ylab   = "Frequency",
+     main   = "Barplot of experience level distribution",
+     col    = "dodgerblue",
+     border = "darkorange")
+
+The barplot is showing that most jobs required a senior level experience.
+
+par(mar = c(14, 11, 11, 8))
+barplot(table(jobs$job_category), xlab   = "Jobs category",
+     ylab   = "Frequency",
+     main   = "bar plot of jobs category",
+     col    = "dodgerblue",
+     border = "darkorange",
+     las = 2)
+     
+
+barplot(table(jobs$work_setting), xlab   = "Jobs setting",
+     ylab   = "Frequency",
+     main   = "bar plot of jobs setting",
+     col    = "dodgerblue",
+     border = "darkorange")
+     
+     
+Most of the jobs are in person.     
+     
+     

@@ -1,0 +1,36 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+library(readr)
+jobs <- read_csv("jobs_in_data.csv.zip")
+View(jobs)
+
+sum(is.na(jobs))
+
+there is no missing values in the entire dataset.
+
+Dealing with outliers.
+
+summary(jobs$salary)
+
+We can see that there is outliers in the right hand of our histogram. 15000 is the minimum salary and 450000 is the maximum salary.
+
+Removing outliers
+
+Q1 <- quantile(jobs$salary, 0.25, na.rm = TRUE)
+Q3 <- quantile(jobs$salary, 0.75, na.rm = TRUE)
+IQR_value <- IQR(jobs$salary, na.rm = TRUE)
+
+lower_bound <- Q1 - 1.5 * IQR_value
+upper_bound <- Q3 + 1.5 * IQR_value
+
+jobs2 <- jobs[jobs$salary >= lower_bound & jobs$salary <= upper_bound, ]
+
+summary(jobs2$salary)
+
+hist(jobs2$salary,  xlab = "Jobs salary", main = "Histogram of the jobs salary",
+                    breaks = 12,
+                    col = "dodgerblue",
+                    border = "darkorange")
