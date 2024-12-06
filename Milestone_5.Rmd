@@ -1,0 +1,19 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+library(readr)
+jobs <- read_csv("jobs_in_data.csv.zip")
+View(jobs)
+
+mean(jobs$salary)
+median(jobs$salary)
+var(jobs$salary)
+sd(jobs$salary)
+
+
+mean(jobs$salary_in_usd)
+median(jobs$salary_in_usd)
+var(jobs$salary_in_usd)
+sd(jobs$salary_in_usd)
