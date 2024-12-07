@@ -1,0 +1,15 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+library(readr)
+jobs <- read_csv("jobs_in_data.csv.zip")
+View(jobs)
+
+
+plot(jobs$salary_in_usd,jobs$salary, xlab = "salary (usd)", ylab = "salary", main = "jobs", col  = "dodgerblue")
+
+cor(jobs$salary, jobs$salary_in_usd)
+
+The salary and salary in USD are highly correlated because they represent the same information, just in different units. The salary column contains the annual gross salary in the local currency, while the salary_in_usd column is a conversion of that salary into United States Dollars (USD) using a fixed exchange rate.
