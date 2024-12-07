@@ -1,0 +1,56 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+library(readr)
+jobs <- read_csv("jobs_in_data.csv.zip")
+View(jobs)
+
+
+For the salary column.
+
+mean_salary <- mean(jobs$salary, na.rm = TRUE)
+sd_salary <- sd(jobs$salary, na.rm = TRUE)
+mean_salary
+sd_salary
+
+n_salary <- sum(!is.na(jobs$salary))
+n_salary
+
+t_critical <- qt(0.975, df = n_salary - 1)
+t_critical
+
+margin_error_salary <- t_critical * (sd_salary / sqrt(n_salary))
+margin_error_salary
+
+lower_bound_salary <- mean_salary - margin_error_salary
+upper_bound_salary <- mean_salary + margin_error_salary
+confidence_interval_salary <- c(lower_bound_salary, upper_bound_salary)
+confidence_interval_salary
+
+For the salary_in_usd column.
+
+mean_salary_in_usd <- mean(jobs$salary_in_usd, na.rm = TRUE)
+sd_salary_in_usd <- sd(jobs$salary_in_usd, na.rm = TRUE)
+mean_salary_in_usd
+sd_salary_in_usd
+
+n_salary_in_usd <- sum(!is.na(jobs$salary_in_usd))
+n_salary_in_usd
+
+t_critical_in_usd <- qt(0.975, df = n_salary_in_usd - 1)
+t_critical_in_usd
+
+margin_error_salary_in_usd <- t_critical_in_usd * (sd_salary_in_usd / sqrt(n_salary_in_usd))
+margin_error_salary_in_usd
+
+lower_bound_salary_in_usd <- mean_salary_in_usd - margin_error_salary_in_usd
+upper_bound_salary_in_usd <- mean_salary_in_usd + margin_error_salary_in_usd
+confidence_interval_salary_in_usd <- c(lower_bound_salary_in_usd, upper_bound_salary_in_usd)
+confidence_interval_salary_in_usd
+
+
+
+
+
