@@ -1,0 +1,28 @@
+---
+title: "R Notebook"
+output: html_notebook
+---
+
+library(readr)
+jobs <- read_csv("jobs_in_data.csv.zip")
+View(jobs)
+
+data.lm <- lm(salary_in_usd ~ salary, data = jobs)
+data.lm
+summary(data.lm)
+
+predict(data.lm, newdata = data.frame(salary = 80000))
+
+resid(data.lm)
+
+hist(resid(data.lm))
+
+plot(jobs$salary,resid(data.lm), main = "Observed vs. Residuals",
+     xlab = "Observed Salary", 
+     ylab = "Residuals")
+
+abline(h = 0,  col = "red", lwd = 2)
+
+
+
+
